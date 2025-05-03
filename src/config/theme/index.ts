@@ -3,7 +3,20 @@ import { createSystem, defaultConfig, defineConfig } from "@chakra-ui/react";
 const config = defineConfig({
   theme: {
     tokens: {
-      colors: {},
+      colors: {
+        cyan: {
+          contrast: {
+            value: "orange",
+          },
+        },
+      },
+    },
+  },
+
+  globalCss: {
+    html: {
+      colorPalette: "cyan",
+      background: "bg.muted",
     },
   },
 });

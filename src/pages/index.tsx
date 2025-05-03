@@ -11,6 +11,10 @@ export default function Home() {
       <CustomAlgoliaSearchBox />
       <CatalogList />
 
+      {/* TODO: Hero banner */}
+      {/* TODO: Seção de contato */}
+      {/* TODO: Footer */}
+
       <RefinementList attribute="name" />
     </>
   );
