@@ -1,4 +1,4 @@
-import { Step } from "../../types";
+import { Step } from "@/components/Register/types";
 
 export interface ActionProps {
   goToNextStep: () => void;
