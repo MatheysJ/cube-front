@@ -1,0 +1,62 @@
+.root {
+  margin: 16px;
+  padding: 2px;
+}
+
+.form {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.input {
+  background-color: #fff;
+  padding: 4px 84px 4px 4px;
+  height: 48px;
+  border-radius: 6px;
+  outline: 0px;
+  color: black;
+  width: 100%;
+}
+
+.submit {
+  background-color: #fff;
+  padding: 16px;
+  position: absolute;
+  top: 50%;
+  transform: translate(0%, -50%);
+  right: 0px;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 80%;
+
+  &:hover {
+    opacity: 100%;
+  }
+}
+
+.reset {
+  background-color: #fff;
+  padding: 16px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-100%, -50%);
+  right: 0px;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 80%;
+
+  &:hover {
+    opacity: 100%;
+  }
+}
+
+.loadingIcon {
+  background-color: #fff;
+  padding: 16px;
+}
+
+.loadingIndicator {
+  background-color: red;
+  display: none;
+}

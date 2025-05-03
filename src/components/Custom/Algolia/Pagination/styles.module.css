@@ -1,0 +1,15 @@
+.root {
+  padding: 4px;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.item {
+  padding: 4px 8px;
+  border: #fff 1px solid;
+  border-radius: 6px;
+}
