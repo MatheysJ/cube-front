@@ -1,4 +1,5 @@
 import React from "react";
+import { chakra } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 
 import { Action, Fields, ThirdParty } from "./components";
@@ -10,7 +11,12 @@ const Form: React.FC<FormProps> = ({ steps }) => {
   const onSubmit = formProps.handleSubmit((data) => console.log(data));
 
   return (
-    <form onSubmit={onSubmit}>
+    <chakra.form
+      onSubmit={onSubmit}
+      display="flex"
+      flexDirection="column"
+      height="100%"
+    >
       <Fields currentStep={steps.value} {...formProps} />
       <ThirdParty />
       <Action
@@ -18,8 +24,9 @@ const Form: React.FC<FormProps> = ({ steps }) => {
         goToPrevStep={steps.goToPrevStep}
         currentStep={steps.value}
         stepItems={STEP_ITEMS}
+        {...formProps}
       />
-    </form>
+    </chakra.form>
   );
 };
 

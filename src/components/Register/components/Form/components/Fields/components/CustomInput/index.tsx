@@ -1,22 +1,23 @@
 import React from "react";
 import { CustomInputProps } from "./types";
-import { Field, Input } from "@chakra-ui/react";
+import { Box, Field, Input } from "@chakra-ui/react";
 
 const CustomInput: React.FC<CustomInputProps> = ({
   label,
   type,
   invalid,
   errorMessage,
+  ...formProps
 }) => {
   return (
     <Field.Root required invalid={invalid}>
       <Field.Label>{label}</Field.Label>
-      {type == "password" ? (
-        <Input variant="flushed" />
+      <Input variant="flushed" {...formProps} />
+      {errorMessage ? (
+        <Field.ErrorText>{errorMessage}</Field.ErrorText>
       ) : (
-        <Input variant="flushed" />
+        <Box height="16px" />
       )}
-      <Field.ErrorText>{errorMessage}</Field.ErrorText>
     </Field.Root>
   );
 };

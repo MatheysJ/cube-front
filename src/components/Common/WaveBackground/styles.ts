@@ -5,7 +5,7 @@ import styled from "@emotion/styled";
 export const Background = styled(Box)`
   position: absolute;
   top: 0;
-  bottom: 40%;
+  bottom: 50%;
   left: 0;
   width: 100%;
   overflow: hidden;
@@ -15,7 +15,7 @@ export const Background = styled(Box)`
 
 export const ShapeDivider = styled(Box)`
   position: absolute;
-  top: 60%;
+  top: 50%;
   left: 0;
   width: 100%;
   overflow: hidden;

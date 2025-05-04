@@ -1,5 +1,8 @@
 import React from "react";
 import { Flex } from "@chakra-ui/react";
+import { PATTERN } from "@/constants/pattern";
+import { ChangeHandler } from "react-hook-form";
+import { formatCPF, formatDate, formatPhone } from "@/utils/format";
 
 import { CustomInput, InputPhase } from "./components";
 import { FieldsProps } from "./types";
@@ -8,52 +11,95 @@ const Fields: React.FC<FieldsProps> = ({
   currentStep,
   register,
   formState: { errors },
-}) => (
-  <Flex flexDirection="column" w={360}>
-    <InputPhase step={currentStep} phase={0}>
-      <CustomInput
-        invalid={!!errors.email}
-        {...register("email", { required: "Plese enter the value" })}
-        label="E-Mail"
-        errorMessage={errors.email?.message as string}
-      />
-      <CustomInput
-        invalid={!!errors.password}
-        {...register("password", { required: "Plese enter the value" })}
-        label="Senha"
-        errorMessage={errors.password?.message as string}
-      />
-      <CustomInput
-        invalid={!!errors.confirmPassword}
-        {...register("confirmPassword", {
-          required: "Plese enter the value",
-        })}
-        label="Repetir senha"
-        errorMessage={errors.confirmPassword?.message as string}
-      />
-    </InputPhase>
+  setValue,
+}) => {
+  const handleCPFChange: ChangeHandler = async (event) => {
+    setValue("cpf", formatCPF(event.target.value), {
+      shouldValidate: true,
+      shouldDirty: true,
+    });
+  };
 
-    <InputPhase step={currentStep} phase={1}>
-      <CustomInput
-        invalid={!!errors.cpf}
-        {...register("cpf", { required: "Plese enter the value" })}
-        label="CPF"
-        errorMessage={errors.cpf?.message as string}
-      />
-      <CustomInput
-        invalid={!!errors.number}
-        {...register("number", { required: "Plese enter the value" })}
-        label="Número de telefone"
-        errorMessage={errors.number?.message as string}
-      />
-      <CustomInput
-        invalid={!!errors.birthData}
-        {...register("birthData", { required: "Plese enter the value" })}
-        label="Data de Nascimento"
-        errorMessage={errors.birthData?.message as string}
-      />
-    </InputPhase>
-  </Flex>
-);
+  const handleBirthDateChange: ChangeHandler = async (event) => {
+    setValue("birthDate", formatDate(event.target.value), {
+      shouldValidate: true,
+      shouldDirty: true,
+    });
+  };
+
+  const handlePhoneChange: ChangeHandler = async (event) => {
+    setValue("phoneNumber", formatPhone(event.target.value), {
+      shouldValidate: true,
+      shouldDirty: true,
+    });
+  };
+
+  return (
+    <Flex flexDirection="column" w={360} height="100%">
+      <InputPhase step={currentStep} phase={0}>
+        <CustomInput
+          invalid={!!errors.email}
+          {...register("email", { required: true, pattern: PATTERN.MAIL })}
+          label="E-Mail"
+          errorMessage={errors.email?.message as string}
+        />
+        <CustomInput
+          invalid={!!errors.password}
+          {...register("password", {
+            required: true,
+            pattern: PATTERN.PASSWORD,
+          })}
+          label="Senha"
+          errorMessage={errors.password?.message as string}
+        />
+        <CustomInput
+          invalid={!!errors.confirmPassword}
+          {...register("confirmPassword", {
+            required: true,
+            validate: (value, { password }) => value == password,
+          })}
+          label="Repetir senha"
+          errorMessage={PATTERN.REPEAT_PASSWORD.message}
+        />
+      </InputPhase>
+
+      <InputPhase step={currentStep} phase={1}>
+        <CustomInput
+          invalid={!!errors.name}
+          {...register("name", { required: true })}
+          label="Nome completo"
+          errorMessage={errors.name?.message as string}
+        />
+        <CustomInput
+          invalid={!!errors.cpf}
+          {...register("cpf", { required: true, pattern: PATTERN.CPF })}
+          label="CPF"
+          onChange={handleCPFChange}
+          errorMessage={errors.cpf?.message as string}
+          maxLength={14}
+        />
+        <CustomInput
+          invalid={!!errors.birthDate}
+          {...register("birthDate", { required: true, pattern: PATTERN.BIRTH })}
+          label="Data de Nascimento"
+          onChange={handleBirthDateChange}
+          errorMessage={errors.birthDate?.message as string}
+        />
+      </InputPhase>
+      <InputPhase step={currentStep} phase={2}>
+        <CustomInput
+          invalid={!!errors.phoneNumber}
+          {...register("phoneNumber", {
+            required: true,
+            pattern: PATTERN.PHONE,
+          })}
+          label="Número de celular"
+          onChange={handlePhoneChange}
+          errorMessage={errors.phoneNumber?.message as string}
+        />
+      </InputPhase>
+    </Flex>
+  );
+};
 
 export default Fields;
