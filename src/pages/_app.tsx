@@ -1,5 +1,6 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
+import { UserProvider } from "@/providers";
 import { ThemeProvider } from "next-themes";
 import { algoliasearch } from "algoliasearch";
 import { ChakraProvider } from "@chakra-ui/react";
@@ -25,7 +26,9 @@ export default function App({ Component, pageProps }: AppProps) {
             indexName={index}
             insights
           >
-            <Component {...pageProps} />
+            <UserProvider>
+              <Component {...pageProps} />
+            </UserProvider>
           </InstantSearch>
         </QueryClientProvider>
       </ThemeProvider>
