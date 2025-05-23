@@ -1,11 +1,10 @@
-export interface RegisterService {
-  (body: RegisterServiceBody): Promise<void>;
+import { FIELD } from "@/constants/field";
+
+export interface LoginService {
+  (body: LoginBody): Promise<void>;
 }
 
-export interface RegisterServiceBody {
-  name: string;
-  mail: string;
-  phone: string;
-  password: string;
-  cpf: string;
+export interface LoginBody {
+  [FIELD.MAIL]: string;
+  [FIELD.PASSWORD]: string;
 }

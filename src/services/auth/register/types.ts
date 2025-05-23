@@ -1,10 +1,10 @@
-import { FIELD } from "@/components/Register/constants";
+import { FIELD } from "@/constants/field";
 
 export interface RegisterService {
-  (body: RegisterServiceBody): Promise<void>;
+  (body: RegisterBody): Promise<void>;
 }
 
-export interface RegisterServiceBody {
+export interface RegisterBody {
   [FIELD.NAME]: string;
   [FIELD.MAIL]: string;
   [FIELD.PHONE]: string;

@@ -1,12 +1,12 @@
+import { register } from "@/services";
 import { usePrefetch } from "@/hooks";
 import { PAGE } from "@/constants/page";
+import { FIELD } from "@/constants/field";
+import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
-import { register as mutationFn } from "@/services";
-import { FIELD } from "@/components/Register/constants";
-import { RegisterServiceBody } from "@/services/auth/register/types";
+import { RegisterBody } from "@/services/auth/register/types";
 
 import { ActionProps } from "../../types";
-import { useRouter } from "next/navigation";
 
 export const useActions = ({
   currentStep,
@@ -24,12 +24,8 @@ export const useActions = ({
   const nextText = isLastStep ? "Finalizar" : "Próximo";
   const firstPhaseFields = [FIELD.MAIL, FIELD.PASSWORD, FIELD.CONFIRM_PASSWORD];
 
-  const { mutateAsync, isPending } = useMutation<
-    void,
-    unknown,
-    RegisterServiceBody
-  >({
-    mutationFn,
+  const { mutateAsync, isPending } = useMutation<void, unknown, RegisterBody>({
+    mutationFn: register,
   });
 
   usePrefetch(PAGE.LOGIN);
@@ -39,9 +35,13 @@ export const useActions = ({
 
   const handleNext = async () => {
     if (isLastStep) {
-      const body = getValues() as RegisterServiceBody;
+      const body = getValues() as RegisterBody;
 
-      return await mutateAsync(body, { onSuccess });
+      try {
+        return await mutateAsync(body, { onSuccess });
+      } catch (e) {
+        console.error("Error creating account");
+      }
     }
 
     await trigger(firstPhaseFields);
