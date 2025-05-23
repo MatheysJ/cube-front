@@ -2,6 +2,7 @@ import React from "react";
 import { Flex } from "@chakra-ui/react";
 import { PATTERN } from "@/constants/pattern";
 import { ChangeHandler } from "react-hook-form";
+import { FIELD } from "@/components/Register/constants";
 import { formatCPF, formatDate, formatPhone } from "@/utils/format";
 
 import { CustomInput, InputPhase } from "./components";
@@ -14,21 +15,21 @@ const Fields: React.FC<FieldsProps> = ({
   setValue,
 }) => {
   const handleCPFChange: ChangeHandler = async (event) => {
-    setValue("cpf", formatCPF(event.target.value), {
+    setValue(FIELD.CPF, formatCPF(event.target.value), {
       shouldValidate: true,
       shouldDirty: true,
     });
   };
 
   const handleBirthDateChange: ChangeHandler = async (event) => {
-    setValue("birthDate", formatDate(event.target.value), {
+    setValue(FIELD.BIRTH, formatDate(event.target.value), {
       shouldValidate: true,
       shouldDirty: true,
     });
   };
 
   const handlePhoneChange: ChangeHandler = async (event) => {
-    setValue("phoneNumber", formatPhone(event.target.value), {
+    setValue(FIELD.PHONE, formatPhone(event.target.value), {
       shouldValidate: true,
       shouldDirty: true,
     });
@@ -39,13 +40,13 @@ const Fields: React.FC<FieldsProps> = ({
       <InputPhase step={currentStep} phase={0}>
         <CustomInput
           invalid={!!errors.email}
-          {...register("email", { required: true, pattern: PATTERN.MAIL })}
+          {...register(FIELD.MAIL, { required: true, pattern: PATTERN.MAIL })}
           label="E-Mail"
           errorMessage={errors.email?.message as string}
         />
         <CustomInput
           invalid={!!errors.password}
-          {...register("password", {
+          {...register(FIELD.PASSWORD, {
             required: true,
             pattern: PATTERN.PASSWORD,
           })}
@@ -54,7 +55,7 @@ const Fields: React.FC<FieldsProps> = ({
         />
         <CustomInput
           invalid={!!errors.confirmPassword}
-          {...register("confirmPassword", {
+          {...register(FIELD.CONFIRM_PASSWORD, {
             required: true,
             validate: (value, { password }) => value == password,
           })}
@@ -66,13 +67,13 @@ const Fields: React.FC<FieldsProps> = ({
       <InputPhase step={currentStep} phase={1}>
         <CustomInput
           invalid={!!errors.name}
-          {...register("name", { required: true })}
+          {...register(FIELD.NAME, { required: true })}
           label="Nome completo"
           errorMessage={errors.name?.message as string}
         />
         <CustomInput
           invalid={!!errors.cpf}
-          {...register("cpf", { required: true, pattern: PATTERN.CPF })}
+          {...register(FIELD.CPF, { required: true, pattern: PATTERN.CPF })}
           label="CPF"
           onChange={handleCPFChange}
           errorMessage={errors.cpf?.message as string}
@@ -80,7 +81,7 @@ const Fields: React.FC<FieldsProps> = ({
         />
         <CustomInput
           invalid={!!errors.birthDate}
-          {...register("birthDate", { required: true, pattern: PATTERN.BIRTH })}
+          {...register(FIELD.BIRTH, { required: true, pattern: PATTERN.BIRTH })}
           label="Data de Nascimento"
           onChange={handleBirthDateChange}
           errorMessage={errors.birthDate?.message as string}
@@ -89,7 +90,7 @@ const Fields: React.FC<FieldsProps> = ({
       <InputPhase step={currentStep} phase={2}>
         <CustomInput
           invalid={!!errors.phoneNumber}
-          {...register("phoneNumber", {
+          {...register(FIELD.PHONE, {
             required: true,
             pattern: PATTERN.PHONE,
           })}

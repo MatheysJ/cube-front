@@ -8,15 +8,9 @@ import { FormProps } from "./types";
 
 const Form: React.FC<FormProps> = ({ steps }) => {
   const formProps = useForm();
-  const onSubmit = formProps.handleSubmit((data) => console.log(data));
 
   return (
-    <chakra.form
-      onSubmit={onSubmit}
-      display="flex"
-      flexDirection="column"
-      height="100%"
-    >
+    <chakra.form display="flex" flexDirection="column" height="100%">
       <Fields currentStep={steps.value} {...formProps} />
       <ThirdParty />
       <Action
