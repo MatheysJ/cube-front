@@ -1,27 +1,26 @@
 import React from "react";
-import { FormProps } from "./types";
-import { Flex } from "@chakra-ui/react";
-import { CustomInput, InputPhase } from "./components";
+import { chakra } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 
-const Form: React.FC<FormProps> = ({ currentStep }) => {
-  const {} = useForm();
+import { Action, Fields, ThirdParty } from "./components";
+import { STEP_ITEMS } from "../../constants";
+import { FormProps } from "./types";
+
+const Form: React.FC<FormProps> = ({ steps }) => {
+  const formProps = useForm();
 
   return (
-    <form>
-      <Flex flexDirection="column" w={360}>
-        <InputPhase step={currentStep} phase={0}>
-          <CustomInput label="E-Mail" />
-          <CustomInput label="Senha" />
-          <CustomInput label="Repetir senha" />
-        </InputPhase>
-        <InputPhase step={currentStep} phase={1}>
-          <CustomInput label="CPF" />
-          <CustomInput label="Número de telefone" />
-          <CustomInput label="Data de Nascimento" />
-        </InputPhase>
-      </Flex>
-    </form>
+    <chakra.form display="flex" flexDirection="column" height="100%">
+      <Fields currentStep={steps.value} {...formProps} />
+      <ThirdParty />
+      <Action
+        goToNextStep={steps.goToNextStep}
+        goToPrevStep={steps.goToPrevStep}
+        currentStep={steps.value}
+        stepItems={STEP_ITEMS}
+        {...formProps}
+      />
+    </chakra.form>
   );
 };
 

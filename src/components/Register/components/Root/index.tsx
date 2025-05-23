@@ -12,6 +12,7 @@ const Root: React.FC<RootProps> = ({ children }) => {
         bg="white"
         overflow="hidden"
         position="relative"
+        minH={520}
       >
         <WaveBackground />
         {children}

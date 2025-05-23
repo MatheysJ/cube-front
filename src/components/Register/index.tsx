@@ -1,16 +1,9 @@
 import React from "react";
-import { RegisterProps } from "./types";
-import {
-  Action,
-  Form,
-  Links,
-  Root,
-  Section,
-  Stepper,
-  ThirdParty,
-} from "./components";
 import { Text, useSteps } from "@chakra-ui/react";
+
+import { Form, Root, Section, Stepper } from "./components";
 import { STEP_ITEMS } from "./constants";
+import { RegisterProps } from "./types";
 
 const Register: React.FC<RegisterProps> = () => {
   const steps = useSteps({ count: STEP_ITEMS.length });
@@ -25,14 +18,7 @@ const Register: React.FC<RegisterProps> = () => {
         <Stepper steps={steps} items={STEP_ITEMS} flexDirection="column" />
       </Section>
       <Section bg="gray.900">
-        <Form currentStep={steps.value} />
-        <ThirdParty />
-        <Action
-          goToNextStep={steps.goToNextStep}
-          goToPrevStep={steps.goToPrevStep}
-          currentStep={steps.value}
-          stepItems={STEP_ITEMS}
-        />
+        <Form steps={steps} />
       </Section>
     </Root>
   );

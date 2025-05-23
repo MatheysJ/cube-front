@@ -5,4 +5,7 @@ export const STEP_ITEMS: Step[] = [
   {
     title: "Informações pessoais",
   },
+  {
+    title: "Informações para contato",
+  },
 ];
