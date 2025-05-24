@@ -1,3 +1,7 @@
-export type UserContextReturn = UserContext | null;
+import { UserData } from "@/services/customer/info/types";
 
-interface UserContext {}
+export interface UserContextReturn {
+  user?: UserData | undefined;
+  isLoggedIn?: boolean;
+  isLoading?: boolean;
+}

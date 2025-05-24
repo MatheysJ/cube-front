@@ -1,7 +1,7 @@
 import { createContext, useContext } from "react";
 import { UserContextReturn } from "./types";
 
-export const UserContext = createContext<UserContextReturn>(null);
+export const UserContext = createContext<UserContextReturn>({});
 
 const useUserContext = (): UserContextReturn => {
   const context = useContext(UserContext);
