@@ -3,8 +3,10 @@ import type { AppProps } from "next/app";
 import { UserProvider } from "@/providers";
 import { ThemeProvider } from "next-themes";
 import { algoliasearch } from "algoliasearch";
+import { Toaster } from "@/components/ui/toaster";
 import { ChakraProvider } from "@chakra-ui/react";
 import { InstantSearch } from "react-instantsearch";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import system from "../config/theme";
@@ -15,7 +17,13 @@ export default function App({ Component, pageProps }: AppProps) {
   const index = process.env.NEXT_PUBLIC_ALGOLIA_CATALOG_INDEX as string;
 
   const algoliaClient = algoliasearch(appId, apiKey);
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        staleTime: 5 * 60 * 1000,
+      },
+    },
+  });
 
   return (
     <ChakraProvider value={system}>
@@ -28,8 +36,10 @@ export default function App({ Component, pageProps }: AppProps) {
           >
             <UserProvider>
               <Component {...pageProps} />
+              <Toaster />
             </UserProvider>
           </InstantSearch>
+          <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
       </ThemeProvider>
     </ChakraProvider>

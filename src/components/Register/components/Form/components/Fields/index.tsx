@@ -51,6 +51,7 @@ const Fields: React.FC<FieldsProps> = ({
             required: true,
             pattern: PATTERN.PASSWORD,
           })}
+          type="password"
           label="Senha"
           errorMessage={errors.password?.message as string}
         />
@@ -60,6 +61,7 @@ const Fields: React.FC<FieldsProps> = ({
             required: true,
             validate: (value, { password }) => value == password,
           })}
+          type="password"
           label="Repetir senha"
           errorMessage={PATTERN.REPEAT_PASSWORD.message}
         />
