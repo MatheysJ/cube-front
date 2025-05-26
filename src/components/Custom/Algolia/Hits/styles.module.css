@@ -4,8 +4,9 @@
 }
 
 .list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
   gap: 16px;
-  padding: 16px;
+  padding: 8px 0px;
 }

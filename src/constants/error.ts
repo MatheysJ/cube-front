@@ -1,3 +1,5 @@
 export enum ERROR_CODE {
   INVALID_CREDENTIALS = "INVALID_CREDENTIALS",
 }
+
+export const MAX_RETRIES = 3;

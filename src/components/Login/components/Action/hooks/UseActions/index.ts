@@ -28,10 +28,7 @@ export const useActions = ({ getValues }: ActionProps) => {
   };
 
   const onSuccess = async () => {
-    await queryClient.invalidateQueries({
-      exact: false,
-      queryKey: [QUERY.USER],
-    });
+    queryClient.refetchQueries({ queryKey: [QUERY.USER], exact: false });
     push(PAGE.HOME);
   };
 

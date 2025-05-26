@@ -1,5 +1,5 @@
 .root {
-  margin: 16px;
+  margin-top: 16px;
   padding: 2px;
 }
 
@@ -11,7 +11,7 @@
 
 .input {
   background-color: #fff;
-  padding: 4px 84px 4px 4px;
+  padding: 4px 84px 4px 12px;
   height: 48px;
   border-radius: 6px;
   outline: 0px;
