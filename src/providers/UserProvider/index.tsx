@@ -8,15 +8,15 @@ import { UserData } from "@/services/customer/info/types";
 import { UserProviderProps } from "./types";
 
 const UserProvider = ({ children }: UserProviderProps) => {
-  const { data, isSuccess, isLoading } = useQuery<UserData>({
+  const { data, isSuccess, isLoading, error } = useQuery<UserData>({
     queryKey: [QUERY.USER],
     queryFn: getUserInfo,
     initialData: undefined,
   });
-  const user = data;
+  const user = error ? undefined : data;
   const isLoggedIn = isSuccess;
 
-  const value = useMemo(() => ({ user, isLoggedIn, isLoading }), [data]);
+  const value = useMemo(() => ({ user, isLoggedIn, isLoading }), [data, error]);
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
