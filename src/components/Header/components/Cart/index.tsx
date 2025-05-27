@@ -1,7 +1,4 @@
 import React from "react";
-import { usePrefetch } from "@/hooks";
-import { PAGE } from "@/constants/page";
-import { useRouter } from "next/navigation";
 import { useCart } from "react-use-cart";
 import { HiOutlineTrash } from "react-icons/hi";
 import { HiShoppingCart } from "react-icons/hi2";
@@ -11,28 +8,18 @@ import {
   Drawer,
   Portal,
   Icon,
-  Text,
   Flex,
-  EmptyState,
-  VStack,
 } from "@chakra-ui/react";
-import { CartItem } from "./components";
-import { CartProduct } from "@/types/products";
+
+import { CartEmpty, CartFilled } from "./components";
 
 const Cart: React.FC = () => {
   /* const { push } = useRouter();
   usePrefetch(PAGE.CHECKOUT); */
 
-  const {
-    isEmpty,
-    totalUniqueItems,
-    items,
-    updateItemQuantity,
-    removeItem,
-    emptyCart,
-  } = useCart();
+  const { totalUniqueItems, emptyCart } = useCart();
 
-  /* TODO: Refatorar em componentes menores */
+  const thereIsNoItemInCart = totalUniqueItems <= 0;
 
   return (
     <Drawer.Root placement="end">
@@ -63,46 +50,20 @@ const Cart: React.FC = () => {
                 height="100%"
                 justifyContent="center"
               >
-                {totalUniqueItems <= 0 ? (
-                  <EmptyState.Root alignSelf="center" justifySelf="center">
-                    <EmptyState.Content>
-                      <EmptyState.Indicator>
-                        <HiShoppingCart />
-                      </EmptyState.Indicator>
-                      <VStack textAlign="center">
-                        <EmptyState.Title>
-                          Seu carrinho está vazio
-                        </EmptyState.Title>
-                        <EmptyState.Description>
-                          Navegue pelo site e adicione itens no carrinho para
-                          vê-los aqui
-                        </EmptyState.Description>
-                      </VStack>
-                    </EmptyState.Content>
-                  </EmptyState.Root>
-                ) : (
-                  <>
-                    <Flex flexDirection="column">
-                      {items.map((item) => (
-                        <CartItem {...(item as CartProduct)} />
-                      ))}
-                    </Flex>
-
-                    <Text>
-                      Você tem {totalUniqueItems}{" "}
-                      {totalUniqueItems == 1 ? "item" : "itens"} no carrinho.
-                    </Text>
-                  </>
-                )}
+                {thereIsNoItemInCart ? <CartEmpty /> : <CartFilled />}
               </Flex>
             </Drawer.Body>
+
             <Drawer.Footer justifyContent="space-between">
-              <Button variant="outline">Fazer pedido</Button>
+              <Button variant="outline" disabled={thereIsNoItemInCart}>
+                Fazer pedido
+              </Button>
               <Button variant="ghost" colorPalette="red" onClick={emptyCart}>
                 Esvaziar
                 <HiOutlineTrash />
               </Button>
             </Drawer.Footer>
+
             <Drawer.CloseTrigger asChild>
               <CloseButton size="sm" />
             </Drawer.CloseTrigger>

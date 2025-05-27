@@ -24,4 +24,6 @@ export interface CartProduct extends Omit<Product, "price"> {
   price: number;
 
   id: string;
+
+  quantity: number;
 }
