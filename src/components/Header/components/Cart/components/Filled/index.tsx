@@ -18,8 +18,8 @@ const CartFilled: React.FC = () => {
 
       <Flex flexDirection="column" mb="4">
         <Flex justifyContent="space-between">
-          <Text>Total: </Text>
-          <Text>
+          <Text textStyle="md">Total: </Text>
+          <Text textStyle="md">
             <FormatNumber value={cartTotal} currency="BRL" style="currency" />
           </Text>
         </Flex>
