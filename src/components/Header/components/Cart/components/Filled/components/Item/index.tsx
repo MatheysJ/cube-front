@@ -23,6 +23,7 @@ const CartItem: React.FC<CartProduct> = ({ name, quantity, id }) => {
           size="xs"
           variant="ghost"
           rounded="full"
+          aria-label={`Diminuir quantidade do produto "${name}" em 1`}
           onClick={() => updateItemQuantity(id, quantity - 1)}
         >
           <HiMiniMinus />
@@ -32,6 +33,7 @@ const CartItem: React.FC<CartProduct> = ({ name, quantity, id }) => {
           size="xs"
           variant="ghost"
           rounded="full"
+          aria-label={`Aumentar quantidade do produto "${name}" em 1`}
           onClick={() => updateItemQuantity(id, quantity + 1)}
         >
           <HiMiniPlus />
@@ -47,6 +49,7 @@ const CartItem: React.FC<CartProduct> = ({ name, quantity, id }) => {
         alignSelf="flex-end"
         ml="auto"
         colorPalette="red"
+        aria-label={`Remover "${name}" do carrinho`}
         onClick={() => removeItem(id)}
       />
     </Flex>

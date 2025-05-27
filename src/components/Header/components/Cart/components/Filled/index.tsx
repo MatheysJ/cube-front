@@ -6,7 +6,7 @@ import { CartProduct } from "@/types/products";
 import { CartItem } from "./components";
 
 const CartFilled: React.FC = () => {
-  const { totalUniqueItems, items, cartTotal } = useCart();
+  const { items, cartTotal } = useCart();
 
   return (
     <Flex height="100%" flexDirection="column" justifyContent="space-between">
