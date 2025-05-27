@@ -10,14 +10,16 @@ const Header: React.FC = () => (
     p="4"
     borderBottomWidth="1px"
     borderColor="gray.50/20"
-    justifyContent="space-between"
+    justifyContent="center"
   >
-    <Heading size="md">Cube</Heading>
-    <Flex gap="4" height="100%">
-      <User />
-      <Register />
-      <Login />
-      <Cart />
+    <Flex justifyContent="space-between" alignItems="center" w="breakpoint-xl">
+      <Heading size="md">Cube</Heading>
+      <Flex gap="4" height="100%">
+        <User />
+        <Register />
+        <Login />
+        <Cart />
+      </Flex>
     </Flex>
   </Flex>
 );

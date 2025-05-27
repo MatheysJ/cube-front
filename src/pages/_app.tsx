@@ -8,6 +8,7 @@ import { useState } from "react";
 import type { AppProps } from "next/app";
 import { UserProvider } from "@/providers";
 import { ThemeProvider } from "next-themes";
+import { CartProvider } from "react-use-cart";
 import { algoliasearch } from "algoliasearch";
 import { Toaster } from "@/components/ui/toaster";
 import { ChakraProvider } from "@chakra-ui/react";
@@ -35,10 +36,12 @@ export default function App({ Component, pageProps }: AppProps) {
             insights
           >
             <UserProvider>
-              <HydrationBoundary state={pageProps.dehydratedState}>
-                <Component {...pageProps} />
-              </HydrationBoundary>
-              <Toaster />
+              <CartProvider>
+                <HydrationBoundary state={pageProps.dehydratedState}>
+                  <Component {...pageProps} />
+                </HydrationBoundary>
+                <Toaster />
+              </CartProvider>
             </UserProvider>
           </InstantSearch>
           <ReactQueryDevtools initialIsOpen={false} />

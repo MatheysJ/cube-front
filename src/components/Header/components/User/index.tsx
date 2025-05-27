@@ -2,6 +2,7 @@ import React from "react";
 import { useUserContext } from "@/contexts";
 import { Menu, Button, Portal, Box } from "@chakra-ui/react";
 import { HiOutlineLogout, HiOutlineArchive } from "react-icons/hi";
+
 import { useUserMenu } from "./hooks/useUserMenu";
 
 const User: React.FC = () => {
@@ -11,10 +12,9 @@ const User: React.FC = () => {
   return user ? (
     <Menu.Root size="md" positioning={{ placement: "bottom" }}>
       <Menu.Trigger asChild>
-        <Button
-          variant="ghost"
-          color="white"
-        >{`Bem vindo, ${user.name}`}</Button>
+        <Button variant="ghost" color="white">
+          {`Bem vindo, ${user.name}`}
+        </Button>
       </Menu.Trigger>
       <Portal>
         <Menu.Positioner>
