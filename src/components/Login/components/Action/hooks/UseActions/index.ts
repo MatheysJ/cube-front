@@ -12,7 +12,7 @@ import { ErrorResponse } from "@/types/rest";
 
 export const useActions = ({ getValues }: ActionProps) => {
   const { push } = useRouter();
-  usePrefetch([PAGE.LOGIN, PAGE.HOME]);
+  usePrefetch([PAGE.LOGIN, PAGE.HOME, PAGE.REGISTER]);
 
   const queryClient = useQueryClient();
   const { mutateAsync, isPending, error } = useMutation<
@@ -24,7 +24,7 @@ export const useActions = ({ getValues }: ActionProps) => {
   });
 
   const handleRegister = () => {
-    push(PAGE.LOGIN);
+    push(PAGE.REGISTER);
   };
 
   const onSuccess = async () => {
