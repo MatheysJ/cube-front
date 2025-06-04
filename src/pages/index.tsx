@@ -1,6 +1,5 @@
-import { Header, CatalogList, Head, Footer, Catalog } from "@/components";
+import { Header, Head, Footer, Catalog } from "@/components";
 import { Configure, RefinementList } from "react-instantsearch";
-import { CustomAlgoliaSearchBox } from "@/components/Custom";
 
 export default function Home() {
   return (
@@ -12,6 +11,7 @@ export default function Home() {
 
       {/* TODO: Hero banner */}
       {/* TODO: Seção de contato */}
+
       <Footer />
 
       <RefinementList attribute="name" />

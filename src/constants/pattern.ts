@@ -22,4 +22,8 @@ export const PATTERN = {
     value: /^\d{2} \d{2}-\d{9}$/,
     message: "Formato inválido (99 99-999999999)",
   },
+  POSTAL_CODE: {
+    value: /^\d{5}-\d{3}$/,
+    message: "Formato de CEP inválido",
+  },
 };

@@ -1,27 +1,31 @@
-import React from "react";
-import { useCart } from "react-use-cart";
-import { HiOutlineTrash } from "react-icons/hi";
-import { HiShoppingCart } from "react-icons/hi2";
 import {
-  Button,
-  CloseButton,
-  Drawer,
-  Portal,
   Icon,
   Flex,
+  Portal,
+  Button,
+  Drawer,
+  CloseButton,
 } from "@chakra-ui/react";
+import React from "react";
+import { usePrefetch } from "@/hooks";
+import { PAGE } from "@/constants/page";
+import { useCart } from "react-use-cart";
+import { useRouter } from "next/navigation";
+import { HiOutlineTrash } from "react-icons/hi";
+import { HiShoppingCart } from "react-icons/hi2";
 
 import { CartEmpty, CartFilled } from "./components";
+import { CartProps } from "./types";
 
-const Cart: React.FC = () => {
-  /* const { push } = useRouter();
-  usePrefetch(PAGE.CHECKOUT); */
+const Cart: React.FC<CartProps> = ({ hideCart }) => {
+  const { push } = useRouter();
+  usePrefetch(PAGE.CHECKOUT);
 
   const { totalUniqueItems, emptyCart } = useCart();
 
   const thereIsNoItemInCart = totalUniqueItems <= 0;
 
-  return (
+  return !hideCart ? (
     <Drawer.Root placement="end">
       <Drawer.Trigger asChild>
         <Button size="md" p="4" variant="ghost">
@@ -55,7 +59,11 @@ const Cart: React.FC = () => {
             </Drawer.Body>
 
             <Drawer.Footer justifyContent="space-between">
-              <Button variant="outline" disabled={thereIsNoItemInCart}>
+              <Button
+                variant="outline"
+                disabled={thereIsNoItemInCart}
+                onClick={() => push(PAGE.CHECKOUT)}
+              >
                 Fazer pedido
               </Button>
               <Button variant="ghost" colorPalette="red" onClick={emptyCart}>
@@ -71,7 +79,7 @@ const Cart: React.FC = () => {
         </Drawer.Positioner>
       </Portal>
     </Drawer.Root>
-  );
+  ) : null;
 };
 
 export default Cart;

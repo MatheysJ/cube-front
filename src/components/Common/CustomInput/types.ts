@@ -1,3 +1,4 @@
+import { FlexProps, InputProps } from "@chakra-ui/react";
 import { UseFormRegisterReturn } from "react-hook-form";
 
 export interface CustomInputProps extends UseFormRegisterReturn {
@@ -5,4 +6,7 @@ export interface CustomInputProps extends UseFormRegisterReturn {
   type?: "default" | "password";
   invalid: boolean;
   errorMessage: string | undefined;
+  variant?: InputProps["variant"];
+  width?: FlexProps["width"];
+  w?: FlexProps["w"];
 }

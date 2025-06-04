@@ -2,8 +2,9 @@ import React from "react";
 import { Flex, Heading } from "@chakra-ui/react";
 
 import { Cart, Login, Register, User } from "./components";
+import { HeaderProps } from "./types";
 
-const Header: React.FC = () => (
+const Header: React.FC<HeaderProps> = ({ hideCart }) => (
   <Flex
     align="center"
     as="header"
@@ -18,7 +19,7 @@ const Header: React.FC = () => (
         <User />
         <Register />
         <Login />
-        <Cart />
+        <Cart hideCart={hideCart} />
       </Flex>
     </Flex>
   </Flex>
