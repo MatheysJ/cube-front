@@ -1,6 +1,6 @@
 import { UseFormReturn } from "react-hook-form";
 
-export interface FormFulfillmentProps {
+export interface PaymentFormProps {
   currentStep: number;
   form: UseFormReturn;
 }

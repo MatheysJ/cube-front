@@ -5,7 +5,7 @@ import { usePrefetch } from "@/hooks";
 import { PAGE } from "@/constants/page";
 import { useRouter } from "next/navigation";
 
-const EmptyCheckout = () => {
+const EmptyCheckout: React.FC = () => {
   usePrefetch(PAGE.HOME);
   const { push } = useRouter();
 

@@ -5,14 +5,14 @@ import { useUserContext } from "@/contexts";
 import { useRouter } from "next/navigation";
 
 export const useCheckout = () => {
+  const { isLoggedIn, isLoading } = useUserContext();
   const { totalUniqueItems } = useCart();
-  const { isLoggedIn } = useUserContext();
   const { push } = useRouter();
 
   const thereIsNoItemInCart = totalUniqueItems <= 0;
 
   useEffect(() => {
-    if (!isLoggedIn) push(PAGE.LOGIN);
+    if (!isLoggedIn && !isLoading) push(PAGE.LOGIN);
   }, []);
 
   return {

@@ -7,4 +7,5 @@ export interface SmartInputProps extends UseFormReturn {
   w?: FlexProps["w"];
   width?: FlexProps["width"];
   variant?: InputProps["variant"];
+  disabled?: InputProps["disabled"];
 }

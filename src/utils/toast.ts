@@ -7,6 +7,11 @@ const toastUtils = {
       description:
         errorMessage ?? "Falha ao realizar login. Tente novamente mais tarde.",
     }),
+  handleOrderFailure: () =>
+    toaster.create({
+      type: "error",
+      description: "Falha ao finalizar pedido. Tente novamente mais tarde.",
+    }),
   handleLogoutFailure: (errorMessage?: string) =>
     toaster.create({
       type: "error",

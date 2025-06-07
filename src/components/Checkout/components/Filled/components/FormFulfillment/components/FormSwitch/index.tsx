@@ -5,10 +5,14 @@ import { HiCheck, HiX } from "react-icons/hi";
 import { FormSwitchProps } from "./types";
 import { Controller } from "react-hook-form";
 
-const FormSwitch: React.FC<FormSwitchProps> = ({ control, formState }) => {
+const FormSwitch: React.FC<FormSwitchProps> = ({
+  control,
+  formState,
+  trigger,
+}) => {
   return (
     <Controller
-      name="active"
+      name="isPickUp"
       control={control}
       render={({ field }) => (
         <Field.Root>
@@ -16,7 +20,10 @@ const FormSwitch: React.FC<FormSwitchProps> = ({ control, formState }) => {
             size="lg"
             name={field.name}
             checked={field.value}
-            onCheckedChange={({ checked }) => field.onChange(checked)}
+            onCheckedChange={({ checked }) => {
+              field.onChange(checked);
+              trigger();
+            }}
           >
             <Switch.HiddenInput />
             <Switch.Control>

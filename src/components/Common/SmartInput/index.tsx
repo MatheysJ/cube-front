@@ -14,6 +14,7 @@ const SmartInput: React.FC<SmartInputProps> = ({
   w,
   width,
   variant,
+  disabled,
 }) => {
   const fieldData = DATA_BY_FIELD[id];
   const handleChange: ChangeHandler = async (event) => {
@@ -30,7 +31,7 @@ const SmartInput: React.FC<SmartInputProps> = ({
     <CustomInput
       invalid={!!errors[id]}
       {...register(id, {
-        required: fieldData.required,
+        required: disabled && fieldData.required,
         pattern: fieldData.pattern,
       })}
       type={fieldData.type}
@@ -40,6 +41,7 @@ const SmartInput: React.FC<SmartInputProps> = ({
       w={w}
       width={width}
       variant={variant}
+      disabled={disabled}
     />
   );
 };
