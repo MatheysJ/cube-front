@@ -8,9 +8,9 @@ import { CatalogListProps } from "./types";
 const CatalogList: React.FC<CatalogListProps> = () => (
   <Flex flexDirection="column" justifyContent="space-between" py="4">
     <CustomAlgoliaHits hitComponent={ProductCardHits} />
-    <Box display="flex" justifyContent="center">
+    {/* <Box display="flex" justifyContent="center">
       <CustomAlgoliaPagination />
-    </Box>
+    </Box> */}
   </Flex>
 );
 

@@ -7,7 +7,7 @@ import { useUserMenu } from "./hooks/useUserMenu";
 
 const User: React.FC = () => {
   const { user } = useUserContext();
-  const { handleLogout } = useUserMenu();
+  const { handleLogout, handleRedirectToOrders } = useUserMenu();
 
   return user ? (
     <Menu.Root size="md" positioning={{ placement: "bottom" }}>
@@ -19,9 +19,13 @@ const User: React.FC = () => {
       <Portal>
         <Menu.Positioner>
           <Menu.Content>
-            <Menu.Item value="copy">
+            <Menu.Item
+              value="orders"
+              onClick={handleRedirectToOrders}
+              cursor="pointer"
+            >
               <HiOutlineArchive />
-              {/* TODO: Implementar */}
+
               <Box flex="1">Pedidos</Box>
             </Menu.Item>
             <Menu.Item
@@ -29,6 +33,7 @@ const User: React.FC = () => {
               color="fg.error"
               _hover={{ bg: "bg.error", color: "fg.error" }}
               onClick={handleLogout}
+              cursor="pointer"
             >
               <HiOutlineLogout />
               <Box flex="1">Sair</Box>

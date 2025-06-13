@@ -1,12 +1,16 @@
-.container {
-  display: flex;
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 384px); /* or any fixed width */
+  justify-content: space-between;
   gap: 16px;
 }
 
-.list {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 16px;
-  padding: 8px 0px;
+.item {
+  flex: 1;
+}
+
+@media (max-width: 807px) {
+  .list {
+    grid-template-columns: 1fr;
+  }
 }

@@ -13,7 +13,7 @@ export const useCheckout = () => {
 
   useEffect(() => {
     if (!isLoggedIn && !isLoading) push(PAGE.LOGIN);
-  }, []);
+  }, [isLoggedIn]);
 
   return {
     thereIsNoItemInCart,

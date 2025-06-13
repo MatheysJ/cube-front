@@ -4,7 +4,7 @@ const CatalogBreadcrumb = () => (
   <Breadcrumb.Root size="lg">
     <Breadcrumb.List>
       <Breadcrumb.Item>
-        <Breadcrumb.Link href="#">Início</Breadcrumb.Link>
+        <Breadcrumb.CurrentLink>Início</Breadcrumb.CurrentLink>
       </Breadcrumb.Item>
       <Breadcrumb.Separator />
       <Breadcrumb.Item>

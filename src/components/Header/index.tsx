@@ -1,7 +1,7 @@
 import React from "react";
-import { Flex, Heading } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 
-import { Cart, Login, Register, User } from "./components";
+import { Cart, Login, Logo, Register, User } from "./components";
 import { HeaderProps } from "./types";
 
 const Header: React.FC<HeaderProps> = ({ hideCart }) => (
@@ -14,7 +14,7 @@ const Header: React.FC<HeaderProps> = ({ hideCart }) => (
     justifyContent="center"
   >
     <Flex justifyContent="space-between" alignItems="center" w="breakpoint-xl">
-      <Heading size="md">Cube</Heading>
+      <Logo />
       <Flex gap="4" height="100%">
         <User />
         <Register />

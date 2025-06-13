@@ -3,4 +3,5 @@ export enum PAGE {
   LOGIN = "/login",
   REGISTER = "/register",
   CHECKOUT = "/checkout",
+  ORDERS = "/orders",
 }

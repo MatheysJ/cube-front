@@ -10,7 +10,8 @@ const PageContent: React.FC<PageContentProps> = ({
   <Flex
     flex={1}
     flexDirection="column"
-    w="breakpoint-xl"
+    w={{ "2xl": "breakpoint-xl", base: "100%" }}
+    px={{ "2xl": "unset", base: "4" }}
     alignSelf="center"
     paddingBlock="4"
     {...flexProps}

@@ -14,8 +14,15 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
   const handleAddToCart = () => addItem(cartProduct);
 
   return (
-    <Card.Root maxW="sm" overflow="hidden">
-      <Image src={image} alt={name} height="xs" minW="sm" />
+    <Card.Root overflow="hidden">
+      <Image
+        src={image}
+        alt={name}
+        height="xs"
+        minW="100"
+        w="100%"
+        objectFit="cover"
+      />
       <Card.Body gap="2" p="6">
         <Card.Title>
           <Highlight<ProductCardProps> attribute="name" hit={props} />
