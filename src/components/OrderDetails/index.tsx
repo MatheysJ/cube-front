@@ -8,12 +8,10 @@ import { OrderDetailsProps } from "./types";
 const OrderDetails: React.FC<OrderDetailsProps> = ({ id }) => {
   const { data } = useOrderDetails(id);
 
-  console.log("OrderDetails id: ", id);
-
   return (
     <PageContent gap="8">
       <OrderByIdBreadcrumb id={id} />
-      {data ? <UserOrder {...data} /> : null}
+      {data && id ? <UserOrder {...data} /> : null}
     </PageContent>
   );
 };

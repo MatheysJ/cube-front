@@ -10,4 +10,5 @@ export interface RegisterBody {
   [FIELD.PHONE]: string;
   [FIELD.PASSWORD]: string;
   [FIELD.CPF]: string;
+  [FIELD.BIRTH]: string;
 }

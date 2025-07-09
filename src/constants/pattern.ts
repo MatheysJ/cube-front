@@ -19,8 +19,8 @@ export const PATTERN = {
     message: "Formato inválido (DD/MM/AAAA)",
   },
   PHONE: {
-    value: /^\d{2} \d{2}-\d{9}$/,
-    message: "Formato inválido (99 99-999999999)",
+    value: /^\d{2}-\d{9}$/,
+    message: "Formato inválido (99-999999999)",
   },
   POSTAL_CODE: {
     value: /^\d{5}-\d{3}$/,

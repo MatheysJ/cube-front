@@ -18,7 +18,6 @@ export const formatDate = (value: string) => {
 export const formatPhone = (value: string) => {
   return value
     .replace(/\D/g, "")
-    .replace(/(\d{2})(\d)/, "$1 $2")
     .replace(/(\d{2})(\d)/, "$1-$2")
     .replace(/(-\d{9}).*/, "$1");
 };
@@ -40,3 +39,6 @@ export const formatByField: IFormatByField = {
   [FIELD.BIRTH]: formatDate,
   [FIELD.PHONE]: formatPhone,
 };
+
+export const removeSpecialChars = (value: string): string =>
+  value.replace(/\D/g, "");

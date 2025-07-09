@@ -22,7 +22,7 @@ const Logo: React.FC = () => {
       alignItems="center"
       onClick={handleClick}
     >
-      <Cube size={24} x={40} y={135} color="#FFF" />
+      <Cube size={24} x={40} y={135} color="#FFF" spin />
       <Text fontSize="md" display={{ base: "block", smDown: "none" }}>
         Cube
       </Text>

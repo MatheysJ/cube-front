@@ -33,6 +33,14 @@ const Buttons: React.FC<ButtonsProps> = ({ steps, form }) => {
     };
     if (value == 1) {
       await form.trigger(fields);
+      /* console.log("fields: ", fields);
+      console.log(
+        "fields validation: ",
+        fields.forEach((field) => {
+          console.log("field:", form.getValues(field));
+          console.log("field is valid", form.getFieldState(field).invalid);
+        })
+      ); */
       if (!fields.some((field) => form.getFieldState(field).invalid)) return;
     }
     if (value == 2) {

@@ -33,10 +33,7 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
       </Card.Body>
 
       <Card.Footer gap="2" p="6" pt="0">
-        <Button variant="solid" p="2">
-          Comprar
-        </Button>
-        <Button variant="outline" p="2" onClick={handleAddToCart}>
+        <Button variant="solid" p="2" onClick={handleAddToCart}>
           Adicionar ao carrinho
         </Button>
       </Card.Footer>

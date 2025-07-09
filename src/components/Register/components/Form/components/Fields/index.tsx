@@ -37,7 +37,12 @@ const Fields: React.FC<FieldsProps> = ({
   };
 
   return (
-    <Flex flexDirection="column" w={360} height="100%">
+    <Flex
+      flexDirection="column"
+      w={{ base: 360, lgDown: "100%" }}
+      height="100%"
+      mb="auto"
+    >
       <InputPhase step={currentStep} phase={0}>
         <CustomInput
           invalid={!!errors[FIELD.MAIL]}

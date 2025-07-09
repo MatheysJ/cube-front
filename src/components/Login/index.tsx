@@ -13,9 +13,9 @@ const Login: React.FC<LoginProps> = () => {
     <React.Fragment>
       <Root>
         <Form {...form} />
-        <Links />
+        {/* <Links /> */}
         <Action getValues={form.getValues} />
-        <ThirdParty />
+        {/* <ThirdParty /> */}
       </Root>
       <WaveBackground />
     </React.Fragment>

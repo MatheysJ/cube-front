@@ -1,8 +1,7 @@
 import React from "react";
-import { PAGE } from "@/constants/page";
-import { Flex, Link, Text, useSteps } from "@chakra-ui/react";
+import { Flex, Text, useSteps } from "@chakra-ui/react";
 
-import { Form, Root, Section, Stepper } from "./components";
+import { Enter, Form, Root, Section, Stepper } from "./components";
 import { STEP_ITEMS } from "./constants";
 import { RegisterProps } from "./types";
 
@@ -20,19 +19,9 @@ const Register: React.FC<RegisterProps> = () => {
           <Stepper steps={steps} items={STEP_ITEMS} flexDirection="column" />
         </Flex>
 
-        <Text color="black" fontSize="2xl" fontWeight="bold">
-          Já possui uma conta?{" "}
-          <Link
-            variant="underline"
-            color="inherit"
-            textDecorationColor="colorPalette.solid"
-            href={PAGE.LOGIN}
-          >
-            Entre
-          </Link>
-        </Text>
+        <Enter hideBelow="lg" />
       </Section>
-      <Section bg="gray.900">
+      <Section bg="gray.900" flex={1}>
         <Form steps={steps} />
       </Section>
     </Root>
