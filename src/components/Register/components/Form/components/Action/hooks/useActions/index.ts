@@ -7,6 +7,7 @@ import { useMutation } from "@tanstack/react-query";
 import { RegisterBody } from "@/services/auth/register/types";
 
 import { ActionProps } from "../../types";
+import { removeSpecialChars } from "@/utils/format";
 
 export const useActions = ({
   currentStep,
@@ -33,12 +34,20 @@ export const useActions = ({
     push(PAGE.LOGIN);
   };
 
+  const getSubmitBody = (): RegisterBody => {
+    const body = getValues() as RegisterBody;
+
+    return {
+      ...body,
+      phone: removeSpecialChars(body.phone),
+      cpfCnpj: removeSpecialChars(body.cpfCnpj),
+    };
+  };
+
   const handleNext = async () => {
     if (isLastStep) {
-      const body = getValues() as RegisterBody;
-
       try {
-        return await mutateAsync(body, { onSuccess });
+        return await mutateAsync(getSubmitBody(), { onSuccess });
       } catch (e) {
         console.error("Error creating account");
       }

@@ -1,30 +1,39 @@
 import { login } from "@/services";
 import { usePrefetch } from "@/hooks";
+import toastUtils from "@/utils/toast";
 import { PAGE } from "@/constants/page";
 import { useRouter } from "next/navigation";
-import { useMutation } from "@tanstack/react-query";
 import { LoginBody } from "@/services/auth/login/types";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { ActionProps } from "../../types";
+import { QUERY } from "@/constants/query";
+import { ErrorResponse } from "@/types/rest";
 
 export const useActions = ({ getValues }: ActionProps) => {
   const { push } = useRouter();
-  usePrefetch([PAGE.LOGIN, PAGE.HOME]);
+  usePrefetch([PAGE.LOGIN, PAGE.HOME, PAGE.REGISTER]);
 
-  const { mutateAsync, isPending } = useMutation<void, unknown, LoginBody>({
+  const queryClient = useQueryClient();
+  const { mutateAsync, isPending, error } = useMutation<
+    void,
+    ErrorResponse,
+    LoginBody
+  >({
     mutationFn: login,
   });
 
   const handleRegister = () => {
-    push(PAGE.LOGIN);
+    push(PAGE.REGISTER);
   };
 
-  const onSuccess = () => {
+  const onSuccess = async () => {
+    queryClient.refetchQueries({ queryKey: [QUERY.USER], exact: false });
     push(PAGE.HOME);
   };
 
-  const onError = () => {
-    console.warn("TODO: Implementar feedback de erro");
+  const onError = (error: ErrorResponse) => {
+    toastUtils.handleLoginFailure(error?.message);
   };
 
   const handleLogin = async () => {
@@ -41,5 +50,6 @@ export const useActions = ({ getValues }: ActionProps) => {
     handleLogin,
     handleRegister,
     isPending,
+    error,
   };
 };

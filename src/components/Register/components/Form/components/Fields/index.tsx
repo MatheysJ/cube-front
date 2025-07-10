@@ -37,7 +37,12 @@ const Fields: React.FC<FieldsProps> = ({
   };
 
   return (
-    <Flex flexDirection="column" w={360} height="100%">
+    <Flex
+      flexDirection="column"
+      w={{ base: 360, lgDown: "100%" }}
+      height="100%"
+      mb="auto"
+    >
       <InputPhase step={currentStep} phase={0}>
         <CustomInput
           invalid={!!errors[FIELD.MAIL]}
@@ -51,6 +56,7 @@ const Fields: React.FC<FieldsProps> = ({
             required: true,
             pattern: PATTERN.PASSWORD,
           })}
+          type="password"
           label="Senha"
           errorMessage={errors.password?.message as string}
         />
@@ -60,6 +66,7 @@ const Fields: React.FC<FieldsProps> = ({
             required: true,
             validate: (value, { password }) => value == password,
           })}
+          type="password"
           label="Repetir senha"
           errorMessage={PATTERN.REPEAT_PASSWORD.message}
         />

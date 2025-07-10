@@ -8,7 +8,7 @@ const Action: React.FC<ActionProps> = (props) => {
   const { handleBack, handleNext, nextText, isPending } = useActions(props);
 
   return (
-    <Flex width="100%" gap="4" mt="8">
+    <Flex width="100%" gap="4" mt="auto">
       <Button
         variant="outline"
         borderRadius="xs"

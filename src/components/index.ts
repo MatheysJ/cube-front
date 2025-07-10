@@ -1,6 +1,10 @@
 export { ProductCard, ProductCardHits, ProductPrice } from "./Product";
+export { default as OrderDetails } from "./OrderDetails";
 export { default as CatalogList } from "./CatalogList";
 export { default as Register } from "./Register";
+export { default as Catalog } from "./Catalog";
 export { default as Header } from "./Header";
+export { default as Footer } from "./Footer";
+export { default as Orders } from "./Orders";
 export { default as Login } from "./Login";
 export { default as Head } from "./Head";

@@ -18,6 +18,7 @@ const Stepper: React.FC<StepperProps> = ({
               key={index}
               title={step.title}
               alignItems="center"
+              lgDown={{ display: steps.value == index ? "flex" : "none" }}
             >
               <Steps.Indicator />
               <Steps.Title color="colorPalette.contrast" fontSize="lg">

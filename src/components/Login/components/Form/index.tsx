@@ -15,6 +15,7 @@ const Form: React.FC<FormProps> = ({ register, formState: { errors } }) => (
     />
     <CustomInput
       label="Senha"
+      type="password"
       invalid={!!errors[FIELD.PASSWORD]}
       {...register(FIELD.PASSWORD, { required: true })}
       errorMessage={errors[FIELD.PASSWORD]?.message as string}

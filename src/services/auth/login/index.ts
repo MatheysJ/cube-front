@@ -12,8 +12,9 @@ export const login: LoginService = async (body) => {
   });
 
   if (!response.ok) {
-    const error = await response.text();
-    throw new Error(error);
+    const error = await response.json();
+
+    throw error;
   }
 
   return response.json();

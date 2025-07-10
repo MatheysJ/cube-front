@@ -1,10 +1,20 @@
+import {
+  QueryClient,
+  HydrationBoundary,
+  QueryClientProvider,
+} from "@tanstack/react-query";
 import "@/styles/globals.css";
+import { useState } from "react";
 import type { AppProps } from "next/app";
+import { UserProvider } from "@/providers";
 import { ThemeProvider } from "next-themes";
+import { CartProvider } from "react-use-cart";
 import { algoliasearch } from "algoliasearch";
+import { Toaster } from "@/components/ui/toaster";
 import { ChakraProvider } from "@chakra-ui/react";
 import { InstantSearch } from "react-instantsearch";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { QUERY_CLIENT_PROPS } from "@/utils/tanstack";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import system from "../config/theme";
 
@@ -14,7 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const index = process.env.NEXT_PUBLIC_ALGOLIA_CATALOG_INDEX as string;
 
   const algoliaClient = algoliasearch(appId, apiKey);
-  const queryClient = new QueryClient();
+  const [queryClient] = useState(() => new QueryClient(QUERY_CLIENT_PROPS));
 
   return (
     <ChakraProvider value={system}>
@@ -25,8 +35,16 @@ export default function App({ Component, pageProps }: AppProps) {
             indexName={index}
             insights
           >
-            <Component {...pageProps} />
+            <UserProvider>
+              <CartProvider>
+                <HydrationBoundary state={pageProps.dehydratedState}>
+                  <Component {...pageProps} />
+                </HydrationBoundary>
+                <Toaster />
+              </CartProvider>
+            </UserProvider>
           </InstantSearch>
+          <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
       </ThemeProvider>
     </ChakraProvider>

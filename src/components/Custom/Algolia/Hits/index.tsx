@@ -6,11 +6,6 @@ import styles from "./styles.module.css";
 
 const CustomAlgoliaHits: React.FC<CustomAlgoliaHitsProps> = ({
   hitComponent,
-}) => (
-  <Hits
-    classNames={{ root: styles.container, list: styles.list }}
-    hitComponent={hitComponent}
-  />
-);
+}) => <Hits classNames={styles} hitComponent={hitComponent} />;
 
 export default CustomAlgoliaHits;

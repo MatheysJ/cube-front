@@ -1,5 +1,4 @@
 import React from "react";
-import { theme } from "@chakra-ui/theme";
 
 import { WaveBackgroundProps } from "./types";
 import * as Styled from "./styles";
