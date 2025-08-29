@@ -1,7 +1,6 @@
 {
   "name": "cube-front",
-  "$schema": "node_modules/wrangler/config-schema.json",
-	"main": ".open-next/worker.js",
+  "main": "src/index.js",
 	"compatibility_date": "2025-03-01",
 	"compatibility_flags": [
 		"nodejs_compat",
@@ -19,4 +18,30 @@
 		"cwd": "./",
 		"watch_dir": "src"
 	},
+  "workers_dev": false,
+  "route": {
+    "pattern": "matheus-junior.xyz/*",
+    "zone_name": "matheus-junior.xyz"
+  },
+  "kv_namespaces": [
+    {
+      "binding": "productionNamespace",
+      "id": "400013d56d24c941605e977cc83daec9"
+    }
+  ],
+  "env": {
+    "staging": {
+      "name": "cube-front-staging",
+      "route": {
+        "pattern": "staging.matheus-junior.xyz/*",
+        "zone_name": "matheus-junior.xyz"
+      },
+      "kv_namespaces": [
+        {
+          "binding": "stagingNamespace",
+          "id": "400013d56d24c941605e977cc83daec9"
+        }
+      ]
+    }
+  }
 }
