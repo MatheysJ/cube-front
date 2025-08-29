@@ -6,7 +6,10 @@
     "dev": "next dev --turbopack",
     "build": "next build --no-lint",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
   },
   "dependencies": {
     "@chakra-ui/cli": "^3.19.1",
@@ -14,6 +17,8 @@
     "@chakra-ui/theme": "^3.4.6",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
+    "@emotion/use-insertion-effect-with-fallbacks": "^1.2.0",
+    "@emotion/utils": "^1.4.2",
     "@tanstack/react-query": "^5.75.1",
     "@tanstack/react-query-devtools": "5.75.1",
     "algoliasearch": "^5.23.4",
@@ -30,12 +35,15 @@
     "styled-components": "^6.1.18"
   },
   "devDependencies": {
+    "@cloudflare/wrangler": "^1.21.0",
     "@eslint/eslintrc": "^3",
+    "@opennextjs/cloudflare": "^1.3.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.3.1",
-    "typescript": "^5"
+    "typescript": "^5",
+    "wrangler": "^4.33.1"
   }
 }
