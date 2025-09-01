@@ -20,6 +20,11 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ["@chakra-ui/react"],
   },
+  serverExternalPackages: ["@emotion/cache", "@emotion/react", "@emotion/utils", "@emotion/use-insertion-effect-with-fallbacks"],
 };
 
 export default nextConfig;
+
+// added by create cloudflare to enable calling `getCloudflareContext()` in `next dev`
+import { initOpenNextCloudflareForDev } from '@opennextjs/cloudflare';
+initOpenNextCloudflareForDev();

@@ -9,9 +9,6 @@ export default function Home() {
       <Header />
       <Catalog />
 
-      {/* TODO: Hero banner */}
-      {/* TODO: Seção de contato */}
-
       <Footer />
 
       <RefinementList attribute="name" />
