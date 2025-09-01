@@ -1,1 +1,13 @@
-export { EmotionDocument as default } from "@cprecioso/next-emotion-ssr"
+import { Html, Head, Main, NextScript } from "next/document";
+
+export default function Document() {
+  return (
+    <Html lang="en" suppressHydrationWarning>
+      <Head />
+      <body>
+        <Main />
+        <NextScript />
+      </body>
+    </Html>
+  );
+}
