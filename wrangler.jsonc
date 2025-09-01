@@ -17,7 +17,11 @@
 	},
 	"observability": {
 		"enabled": true
-	}
+	},
+	"route": {
+    "pattern": "*.matheus-junior.xyz/*",
+    "zone_name": "matheus-junior.xyz"
+  },
 	/**
 	 * Smart Placement
 	 * Docs: https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
