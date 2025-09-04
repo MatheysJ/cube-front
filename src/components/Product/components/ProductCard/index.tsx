@@ -1,4 +1,5 @@
 import React from "react";
+import toastUtils from "@/utils/toast";
 import { useCart } from "react-use-cart";
 import { Highlight } from "react-instantsearch";
 import { productToCartProduct } from "@/utils/mapper";
@@ -11,7 +12,11 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
   const { description, image, name, price } = props;
   const { addItem } = useCart();
   const cartProduct = productToCartProduct(props);
-  const handleAddToCart = () => addItem(cartProduct);
+  
+  const handleAddToCart = () => {
+    addItem(cartProduct);
+    toastUtils.handleAddToCart();
+  };
 
   return (
     <Card.Root overflow="hidden">

@@ -17,7 +17,7 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ currentStep, form }) => {
       value: "BOLETO",
       title: "Boleto",
       icon: <HiDocumentText size={64} />,
-      disabled: false,
+      disabled: true,
     },
     {
       value: "card",
@@ -54,7 +54,7 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ currentStep, form }) => {
                   h="48"
                   justifyContent="center"
                   alignItems="center"
-                  cursor={item.disabled ? "unset" : "pointer"}
+                  cursor={item.disabled ? "disabled" : "pointer"}
                   disabled={item.disabled}
                 >
                   <RadioCard.ItemHiddenInput onBlur={field.onBlur} />

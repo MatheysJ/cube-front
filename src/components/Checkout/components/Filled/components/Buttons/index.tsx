@@ -8,6 +8,7 @@ import { OrderServiceProps } from "@/services/order/submit/types";
 
 import { ButtonsProps } from "./types";
 import toastUtils from "@/utils/toast";
+import { FIELD } from "@/constants/field";
 
 const Buttons: React.FC<ButtonsProps> = ({ steps, form }) => {
   const { value, goToNextStep, goToPrevStep } = steps;
@@ -31,17 +32,35 @@ const Buttons: React.FC<ButtonsProps> = ({ steps, form }) => {
       ...form.getValues(),
       items: items as OrderServiceProps["items"],
     };
+
+    const isAddresseeFilled = form.getValues("address.addressee.fullName") !== "";
+
     if (value == 1) {
       await form.trigger(fields);
-      /* console.log("fields: ", fields);
-      console.log(
-        "fields validation: ",
-        fields.forEach((field) => {
-          console.log("field:", form.getValues(field));
-          console.log("field is valid", form.getFieldState(field).invalid);
-        })
-      ); */
-      if (!fields.some((field) => form.getFieldState(field).invalid)) return;
+      console.log("fields: ", fields);
+      
+      if (!form.getValues("isPickUp")) {
+        console.log("isPickUp false");
+        
+        console.log(form.getFieldState("address"))
+        console.log(form.getValues("address"))
+
+        const addressFieldsAreFilled = Object.values(form.getValues("address")).every((field => field !== ""))
+
+        console.log("addressFieldsAreFilled: ", addressFieldsAreFilled)
+
+        if (!addressFieldsAreFilled || !isAddresseeFilled) {          
+          toastUtils.handleFillAddressInfo(); 
+          return;
+        }
+      } else {
+        if (!isAddresseeFilled) {
+          toastUtils.handleFillAddresseeInfo(); 
+          return;
+        }
+      }
+      
+      //if (!fields.some((field) => form.getFieldState(field).invalid)) return;
     }
     if (value == 2) {
       await mutateAsync(body as OrderServiceProps, { onSuccess, onError });
