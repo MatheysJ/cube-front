@@ -1,1 +1,1 @@
-export interface OrdersProps {}
+export type OrdersProps = object;

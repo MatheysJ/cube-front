@@ -1,1 +1,1 @@
-export interface TitleProps {}
+export type TitleProps = object;

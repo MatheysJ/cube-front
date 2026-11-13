@@ -1,1 +1,1 @@
-export interface WaveBackgroundProps {}
+export type WaveBackgroundProps = object;

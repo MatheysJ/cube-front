@@ -1,1 +1,1 @@
-export interface LoginProps {}
+export type LoginProps = object;

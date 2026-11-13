@@ -1,1 +1,1 @@
-export interface LinksProps {}
+export type LinksProps = object;

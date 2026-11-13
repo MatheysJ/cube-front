@@ -12,7 +12,7 @@ const CartFilled: React.FC = () => {
     <Flex height="100%" flexDirection="column" justifyContent="space-between">
       <Flex flexDirection="column">
         {items.map((item) => (
-          <CartItem {...(item as CartProduct)} />
+          <CartItem key={item.id} {...(item as CartProduct)} />
         ))}
       </Flex>
 

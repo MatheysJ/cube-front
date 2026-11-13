@@ -1,1 +1,1 @@
-export interface HeadProps {}
+export type HeadProps = object;
