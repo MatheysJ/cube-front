@@ -27,10 +27,20 @@ jobs:
     name: Build do Worker (OpenNext)
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    env:
+      # Valores fictícios só para o pré-render do Next não quebrar.
+      # Os valores reais ficam nas variáveis de build da Cloudflare.
+      NEXT_PUBLIC_ALGOLIA_APP_ID: CI_PLACEHOLDER
+      NEXT_PUBLIC_ALGOLIA_API_KEY: ci-placeholder
+      NEXT_PUBLIC_ALGOLIA_CATALOG_INDEX: products_index
+      NEXT_PUBLIC_HOST: https://api.example.com
+      NEXT_PUBLIC_AUTH_SERVICE: /v1/auth
+      NEXT_PUBLIC_CUSTOMER_SERVICE: /v1/customer
+      NEXT_PUBLIC_ORDER_SERVICE: /v1/order
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: yarn
@@ -53,8 +63,8 @@ jobs:
     timeout-minutes: 10
     continue-on-error: true
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: yarn
@@ -67,8 +77,8 @@ jobs:
     timeout-minutes: 10
     continue-on-error: true
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: yarn
