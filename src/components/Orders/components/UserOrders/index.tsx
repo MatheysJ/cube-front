@@ -11,7 +11,7 @@ const UserOrders: React.FC = () => {
   return isSuccess && !isLoading ? (
     <Flex flexDirection="column" gap="8" flex={1}>
       {data?.length && data?.length > 0 ? (
-        data?.map((order) => <UserOrder {...order} />)
+        data?.map((order) => <UserOrder key={order.id} {...order} />)
       ) : (
         <EmptyOrders />
       )}

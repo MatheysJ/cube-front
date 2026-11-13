@@ -2,9 +2,8 @@ import React from "react";
 
 import { OrdersBreadcrumb, UserOrders } from "./components";
 import { PageContent } from "../Common";
-import { OrdersProps } from "./types";
 
-const Orders: React.FC<OrdersProps> = () => {
+const Orders: React.FC = () => {
   return (
     <PageContent gap="8">
       <OrdersBreadcrumb />

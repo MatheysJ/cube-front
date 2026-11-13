@@ -31,4 +31,10 @@ export enum BILLING_TYPE {
   BOLETO = "BOLETO",
 }
 
-export type OrderService = (body: OrderServiceProps) => Promise<void>;
+export interface OrderServiceResponse {
+  invoiceUrl: string;
+}
+
+export type OrderService = (
+  body: OrderServiceProps
+) => Promise<OrderServiceResponse>;

@@ -1,3 +1,3 @@
 import { Order } from "@/types/orders";
 
-export interface UserOrderProps extends Order {}
+export type UserOrderProps = Order;

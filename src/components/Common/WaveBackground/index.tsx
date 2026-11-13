@@ -1,9 +1,8 @@
 import React from "react";
 
-import { WaveBackgroundProps } from "./types";
 import * as Styled from "./styles";
 
-const WaveBackground: React.FC<WaveBackgroundProps> = () => {
+const WaveBackground: React.FC = () => {
   return (
     <React.Fragment>
       <Styled.Background className="background" bottom="40%" />
