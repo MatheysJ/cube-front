@@ -3,9 +3,8 @@ import { Flex, Text, useSteps } from "@chakra-ui/react";
 
 import { Enter, Form, Root, Section, Stepper } from "./components";
 import { STEP_ITEMS } from "./constants";
-import { RegisterProps } from "./types";
 
-const Register: React.FC<RegisterProps> = () => {
+const Register: React.FC = () => {
   const steps = useSteps({ count: STEP_ITEMS.length });
 
   return (

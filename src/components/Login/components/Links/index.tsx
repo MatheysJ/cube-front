@@ -1,9 +1,8 @@
 import { Flex, Link } from "@chakra-ui/react";
 import React from "react";
-import { LinksProps } from "./types";
 import { useRouter } from "next/router";
 
-const Links: React.FC<LinksProps> = () => {
+const Links: React.FC = () => {
   const { push } = useRouter();
   const forgottenPasswordUrl = "/esqueci-a-senha";
 

@@ -1,9 +1,8 @@
 import { SearchBox } from "react-instantsearch";
 
-import { CustomAlgoliaSearchBoxProps } from "./types";
 import styles from "./styles.module.css";
 
-const CustomAlgoliaSearchBox: React.FC<CustomAlgoliaSearchBoxProps> = () => (
+const CustomAlgoliaSearchBox: React.FC = () => (
   <SearchBox
     placeholder="Digite para encontrar o que você deseja..."
     classNames={{ ...styles }}

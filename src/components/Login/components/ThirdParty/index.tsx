@@ -2,10 +2,9 @@ import React from "react";
 import { Button, Flex, Icon } from "@chakra-ui/react";
 import { HiMiniQuestionMarkCircle } from "react-icons/hi2";
 
-import { ThirdPartyProps } from "./types";
 import * as Styled from "./styles";
 
-const ThirdParty: React.FC<ThirdPartyProps> = () => {
+const ThirdParty: React.FC = () => {
   return (
     <Flex flexDirection="column" gap="3" mt="8" alignItems="center">
       <Flex width="100%" alignItems="center">

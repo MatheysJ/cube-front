@@ -1,9 +1,8 @@
 import React from "react";
 import NextHead from "next/head";
 
-import { HeadProps } from "./types";
 
-const Head: React.FC<HeadProps> = () => (
+const Head: React.FC = () => (
   <NextHead>
     <title>Cube</title>
     <meta name="description" content="description" />
