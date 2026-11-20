@@ -114,6 +114,7 @@ A aplicação abre em <http://localhost:3000>.
 | `yarn build` | Build de produção do Next.js |
 | `yarn start` | Servidor de produção local |
 | `yarn lint` | ESLint |
+| `yarn test` | Testes unitários (Vitest) |
 | `yarn preview` | Build com OpenNext e preview local no runtime do Cloudflare |
 | `yarn deploy` | Build com OpenNext e deploy no Cloudflare Workers |
 | `yarn upload` | Build com OpenNext e upload de uma nova versão do Worker |
