@@ -9,7 +9,7 @@ const CheckoutItems: React.FC<CheckoutItemsProps> = ({ currentStep }) => {
   const shouldRender = currentStep == 0;
 
   return shouldRender
-    ? items.map((item) => <SimpleProductCard {...item} />)
+    ? items.map((item) => <SimpleProductCard key={item.id} {...item} />)
     : null;
 };
 

@@ -29,5 +29,4 @@ const Logo: React.FC = () => {
     </Flex>
   );
 };
-1;
 export default Logo;

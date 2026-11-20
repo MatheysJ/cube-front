@@ -20,7 +20,7 @@ const SimpleProductCard: React.FC<SimpleProductCardProps> = ({
     shadow="sm"
     key={id}
   >
-    <Image src={image} w={32} h={32} />
+    <Image src={image} alt={name} w={32} h={32} />
     <Flex flexDirection="column" p="4" justifyContent="space-between">
       <Flex flexDirection="column">
         <Text>{name}</Text>

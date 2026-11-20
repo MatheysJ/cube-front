@@ -1,1 +1,1 @@
-export interface CatalogListProps {}
+export type CatalogListProps = object;

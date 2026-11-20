@@ -15,6 +15,4 @@ export const logout: LogoutService = async () => {
 
     throw error;
   }
-
-  return response?.status !== 204 ? response?.json() : response;
 };

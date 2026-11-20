@@ -4,7 +4,10 @@ import { useRouter } from "next/navigation";
 import { Button, Flex } from "@chakra-ui/react";
 import { subimitOrder } from "@/services/order";
 import { useMutation } from "@tanstack/react-query";
-import { OrderServiceProps } from "@/services/order/submit/types";
+import {
+  OrderServiceProps,
+  OrderServiceResponse,
+} from "@/services/order/submit/types";
 
 import { ButtonsProps } from "./types";
 import toastUtils from "@/utils/toast";
@@ -17,14 +20,14 @@ const Buttons: React.FC<ButtonsProps> = ({ steps, form }) => {
   const { items } = useCart();
 
   const { mutateAsync, isPending } = useMutation<
-    void,
+    OrderServiceResponse,
     unknown,
     OrderServiceProps
   >({
     mutationFn: subimitOrder,
   });
 
-  const onSuccess = (data: any) => push(data.invoiceUrl);
+  const onSuccess = (data: OrderServiceResponse) => push(data.invoiceUrl);
   const onError = () => toastUtils.handleOrderFailure();
 
   const handleNext = async () => {

@@ -1,4 +1,4 @@
-export interface RegisterProps {}
+export type RegisterProps = object;
 
 export interface Step {
   title: string;

@@ -1,1 +1,1 @@
-export interface CustomAlgoliaSearchBoxProps {}
+export type CustomAlgoliaSearchBoxProps = object;
