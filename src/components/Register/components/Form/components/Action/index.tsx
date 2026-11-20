@@ -14,7 +14,7 @@ const Action: React.FC<ActionProps> = (props) => {
         borderRadius="xs"
         flex={1}
         onClick={handleBack}
-        disabled={props.currentStep == 0}
+        disabled={props.currentStep === 0}
       >
         Voltar
       </Button>

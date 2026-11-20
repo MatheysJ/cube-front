@@ -1,11 +1,10 @@
-import { Flex, Steps, useSteps } from "@chakra-ui/react";
+import { Flex, Steps } from "@chakra-ui/react";
 import React from "react";
 import { StepperProps } from "./types";
 
 const Stepper: React.FC<StepperProps> = ({
   steps,
   items,
-  inverted,
   ...flexProps
 }) => {
   return (
@@ -18,7 +17,7 @@ const Stepper: React.FC<StepperProps> = ({
               key={index}
               title={step.title}
               alignItems="center"
-              lgDown={{ display: steps.value == index ? "flex" : "none" }}
+              lgDown={{ display: steps.value === index ? "flex" : "none" }}
             >
               <Steps.Indicator />
               <Steps.Title color="colorPalette.contrast" fontSize="lg">

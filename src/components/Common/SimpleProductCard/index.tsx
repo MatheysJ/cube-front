@@ -29,7 +29,7 @@ const SimpleProductCard: React.FC<SimpleProductCardProps> = ({
         </Text>
       </Flex>
       <Text>
-        {quantity} {quantity == 1 ? "unidade" : "unidades"}
+        {quantity} {quantity === 1 ? "unidade" : "unidades"}
       </Text>
     </Flex>
   </Flex>

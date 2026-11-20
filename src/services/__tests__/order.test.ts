@@ -1,8 +1,8 @@
 import { beforeEach, describe, expect, it } from "vitest";
 
 import { DEFAULT_HEADERS } from "@/constants/service";
-import { getOrders, subimitOrder } from "@/services";
-import { getOrderById } from "@/services/order/getOrderById";
+import { getOrders, submitOrder } from "@/services";
+import { getOrderById } from "@/services";
 import {
   HOST_MOCK,
   ORDER_SERVICE_MOCK,
@@ -16,12 +16,12 @@ describe("order services", () => {
     stubServiceEnv();
   });
 
-  describe("subimitOrder", () => {
+  describe("submitOrder", () => {
     it("should post the order and return the invoice url", async () => {
       const fetchMock = mockFetch({ invoiceUrl: getMockOfOrder().invoiceUrl });
       const body = getMockOfOrderBody();
 
-      const response = await subimitOrder(body);
+      const response = await submitOrder(body);
 
       const { url, init } = getFetchCall(fetchMock);
       expect(url).toBe(`${HOST_MOCK}${ORDER_SERVICE_MOCK}`);
@@ -35,7 +35,7 @@ describe("order services", () => {
     it("should throw an Error with the response text", async () => {
       mockFetch("Produto não encontrado", 404);
 
-      await expect(subimitOrder(getMockOfOrderBody())).rejects.toThrow(
+      await expect(submitOrder(getMockOfOrderBody())).rejects.toThrow(
         "Produto não encontrado"
       );
     });

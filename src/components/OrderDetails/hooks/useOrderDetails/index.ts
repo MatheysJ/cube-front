@@ -1,17 +1,9 @@
 import { QUERY } from "@/constants/query";
+import { getOrderById } from "@/services";
 import { useQuery } from "@tanstack/react-query";
-import { getOrderById } from "@/services/order/getOrderById";
 
-export const useOrderDetails = (id: string) => {
-  const { data, isLoading, isSuccess, error } = useQuery({
-    queryKey: [QUERY.ORDERS],
+export const useOrderDetails = (id: string) =>
+  useQuery({
+    queryKey: [QUERY.ORDERS, id],
     queryFn: () => getOrderById(id),
   });
-
-  return {
-    data,
-    isLoading,
-    error,
-    isSuccess,
-  };
-};

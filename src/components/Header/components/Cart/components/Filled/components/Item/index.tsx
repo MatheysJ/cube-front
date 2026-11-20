@@ -8,8 +8,6 @@ import React from "react";
 const CartItem: React.FC<CartProduct> = ({ name, quantity, id }) => {
   const { updateItemQuantity, removeItem } = useCart();
 
-  /* TODO: Melhorar acessibilidade */
-
   return (
     <Flex
       borderBottom="1px solid"

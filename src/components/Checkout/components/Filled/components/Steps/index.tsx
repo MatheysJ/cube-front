@@ -1,5 +1,5 @@
 import { CHECKOUT_STEPS } from "@/components/Checkout/constants";
-import { Flex, Steps, useSteps } from "@chakra-ui/react";
+import { Steps } from "@chakra-ui/react";
 import React from "react";
 import { CheckoutFormProps } from "./types";
 

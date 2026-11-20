@@ -2,7 +2,7 @@ import { DEFAULT_HEADERS } from "@/constants/service";
 
 import { OrderService } from "./types";
 
-export const subimitOrder: OrderService = async (body) => {
+export const submitOrder: OrderService = async (body) => {
   const url = `${process.env.NEXT_PUBLIC_HOST}${process.env.NEXT_PUBLIC_ORDER_SERVICE}`;
   const response = await fetch(url, {
     method: "POST",

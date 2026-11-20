@@ -1,7 +1,6 @@
 import React from "react";
 import NextHead from "next/head";
 
-
 const Head: React.FC = () => (
   <NextHead>
     <title>Cube</title>

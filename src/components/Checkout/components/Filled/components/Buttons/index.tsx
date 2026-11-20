@@ -2,16 +2,19 @@ import React from "react";
 import { useCart } from "react-use-cart";
 import { useRouter } from "next/navigation";
 import { Button, Flex } from "@chakra-ui/react";
-import { subimitOrder } from "@/services/order";
+import { submitOrder } from "@/services/order";
 import { useMutation } from "@tanstack/react-query";
 import {
   OrderServiceProps,
   OrderServiceResponse,
 } from "@/services/order/submit/types";
+import toastUtils from "@/utils/toast";
 
 import { ButtonsProps } from "./types";
-import toastUtils from "@/utils/toast";
-import { FIELD } from "@/constants/field";
+import { FULFILLMENT_ERROR, getFulfillmentError } from "./utils";
+
+const FULFILLMENT_STEP = 1;
+const PAYMENT_STEP = 2;
 
 const Buttons: React.FC<ButtonsProps> = ({ steps, form }) => {
   const { value, goToNextStep, goToPrevStep } = steps;
@@ -24,49 +27,36 @@ const Buttons: React.FC<ButtonsProps> = ({ steps, form }) => {
     unknown,
     OrderServiceProps
   >({
-    mutationFn: subimitOrder,
+    mutationFn: submitOrder,
   });
 
   const onSuccess = (data: OrderServiceResponse) => push(data.invoiceUrl);
   const onError = () => toastUtils.handleOrderFailure();
 
   const handleNext = async () => {
-    const body = {
-      ...form.getValues(),
-      items: items as OrderServiceProps["items"],
-    };
-
-    const isAddresseeFilled = form.getValues("address.addressee.fullName") !== "";
-
-    if (value == 1) {
+    if (value === FULFILLMENT_STEP) {
       await form.trigger(fields);
-      console.log("fields: ", fields);
-      
-      if (!form.getValues("isPickUp")) {
-        console.log("isPickUp false");
-        
-        console.log(form.getFieldState("address"))
-        console.log(form.getValues("address"))
 
-        const addressFieldsAreFilled = Object.values(form.getValues("address")).every((field => field !== ""))
+      const error = getFulfillmentError(form.getValues());
 
-        console.log("addressFieldsAreFilled: ", addressFieldsAreFilled)
-
-        if (!addressFieldsAreFilled || !isAddresseeFilled) {          
-          toastUtils.handleFillAddressInfo(); 
-          return;
-        }
-      } else {
-        if (!isAddresseeFilled) {
-          toastUtils.handleFillAddresseeInfo(); 
-          return;
-        }
+      if (error === FULFILLMENT_ERROR.ADDRESS) {
+        toastUtils.handleFillAddressInfo();
+        return;
       }
-      
-      //if (!fields.some((field) => form.getFieldState(field).invalid)) return;
+
+      if (error === FULFILLMENT_ERROR.ADDRESSEE) {
+        toastUtils.handleFillAddresseeInfo();
+        return;
+      }
     }
-    if (value == 2) {
-      await mutateAsync(body as OrderServiceProps, { onSuccess, onError });
+
+    if (value === PAYMENT_STEP) {
+      const body = {
+        ...form.getValues(),
+        items: items as OrderServiceProps["items"],
+      } as OrderServiceProps;
+
+      await mutateAsync(body, { onSuccess, onError });
     }
 
     goToNextStep();

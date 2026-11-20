@@ -10,7 +10,7 @@ import { PAGE } from "@/constants/page";
 export const useUserMenu = () => {
   const queryClient = useQueryClient();
   const { push } = useRouter();
-  const { mutateAsync, isPending } = useMutation<void, ErrorResponse, null>({
+  const { mutateAsync } = useMutation<void, ErrorResponse, null>({
     mutationFn: logout,
   });
   usePrefetch(PAGE.ORDERS);
@@ -27,11 +27,11 @@ export const useUserMenu = () => {
     try {
       return await mutateAsync(null, { onSuccess, onError });
     } catch (e) {
-      console.error("Error logging in", e);
+      console.error("Error logging out", e);
     }
   };
 
   const handleRedirectToOrders = () => push(PAGE.ORDERS);
 
-  return { handleLogout, handleRedirectToOrders, isLoading: isPending };
+  return { handleLogout, handleRedirectToOrders };
 };

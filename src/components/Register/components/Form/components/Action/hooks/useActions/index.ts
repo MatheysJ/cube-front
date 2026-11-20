@@ -21,7 +21,7 @@ export const useActions = ({
   const { push } = useRouter();
 
   const numberOfSteps = stepItems.length;
-  const isLastStep = currentStep == numberOfSteps - 1;
+  const isLastStep = currentStep === numberOfSteps - 1;
   const nextText = isLastStep ? "Finalizar" : "Próximo";
   const firstPhaseFields = [FIELD.MAIL, FIELD.PASSWORD, FIELD.CONFIRM_PASSWORD];
 
@@ -47,10 +47,12 @@ export const useActions = ({
   const handleNext = async () => {
     if (isLastStep) {
       try {
-        return await mutateAsync(getSubmitBody(), { onSuccess });
+        await mutateAsync(getSubmitBody(), { onSuccess });
       } catch (e) {
-        console.error("Error creating account");
+        console.error("Error creating account", e);
       }
+
+      return;
     }
 
     await trigger(firstPhaseFields);

@@ -8,7 +8,7 @@ const FormFulfillment: React.FC<FormFulfillmentProps> = ({
   currentStep,
   form,
 }) => {
-  const shouldRender = currentStep == 1;
+  const shouldRender = currentStep === 1;
 
   return shouldRender ? (
     <Flex flexDirection="column" gap="8">

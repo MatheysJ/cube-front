@@ -1,4 +1,4 @@
-import { Footer, Head, Header, Login } from "@/components";
+import { Footer, Head, Header } from "@/components";
 import Checkout from "@/components/Checkout";
 
 export default function CheckoutPage() {

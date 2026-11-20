@@ -4,10 +4,9 @@ import { useRouter } from "next/navigation";
 
 export const usePrefetch = (pages: PAGE | PAGE[]) => {
   const { prefetch } = useRouter();
+  const routes = [pages].flat().join(",");
 
   useEffect(() => {
-    const routes = typeof pages == "string" ? [pages] : pages;
-
-    routes.map((route) => prefetch(route));
-  });
+    routes.split(",").forEach((route) => prefetch(route));
+  }, [prefetch, routes]);
 };

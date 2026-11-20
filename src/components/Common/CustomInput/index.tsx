@@ -15,7 +15,7 @@ const CustomInput: React.FC<CustomInputProps> = ({
 }) => (
   <Field.Root required invalid={invalid} w={w} width={width}>
     <Field.Label>{label}</Field.Label>
-    {type == "password" ? (
+    {type === "password" ? (
       <PasswordInput variant={variant ?? "flushed"} {...formProps} />
     ) : (
       <Input variant={variant ?? "flushed"} {...formProps} />

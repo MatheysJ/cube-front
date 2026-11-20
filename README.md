@@ -134,7 +134,7 @@ yarn deploy
 src/
 ├── pages/         # Rotas (Pages Router): /, login, register, checkout, orders, order/[slug]
 ├── components/    # Catalog, Checkout, Header (carrinho, login, usuário), Login, Register, Orders...
-│   ├── Custom/Algolia/   # Hits, SearchBox e Pagination do InstantSearch
+│   ├── Custom/Algolia/   # Hits e SearchBox do InstantSearch
 │   └── Common/           # Componentes reutilizáveis (inputs, cards, cubo 3D animado)
 ├── services/      # Chamadas HTTP: auth, customer e order
 ├── providers/     # UserProvider (sessão do usuário)

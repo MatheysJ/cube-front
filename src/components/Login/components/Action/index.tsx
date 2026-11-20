@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Flex } from "@chakra-ui/react";
 
-import { useActions } from "./hooks/UseActions";
+import { useActions } from "./hooks/useActions";
 import { ActionProps } from "./types";
 
 const Action: React.FC<ActionProps> = (props) => {

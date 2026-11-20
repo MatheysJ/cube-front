@@ -1,6 +1,6 @@
 import React from "react";
 import { useCart } from "react-use-cart";
-import { Box, Flex, FormatNumber, Table, Text } from "@chakra-ui/react";
+import { Flex, FormatNumber, Text } from "@chakra-ui/react";
 import { CartProduct } from "@/types/products";
 
 import { CartItem } from "./components";

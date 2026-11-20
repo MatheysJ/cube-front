@@ -9,7 +9,7 @@ import { HStack, Icon, RadioCard } from "@chakra-ui/react";
 import { PaymentFormProps } from "./types";
 
 const PaymentForm: React.FC<PaymentFormProps> = ({ currentStep, form }) => {
-  const shouldRender = currentStep == 2;
+  const shouldRender = currentStep === 2;
 
   const items = [
     { value: "PIX", title: "PIX", icon: <MdPix size={64} />, disabled: false },
@@ -37,10 +37,7 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ currentStep, form }) => {
             orientation="vertical"
             align="center"
             w="100%"
-            onValueChange={({ value }) => {
-              console.log("field change: ", value);
-              field.onChange(value);
-            }}
+            onValueChange={({ value }) => field.onChange(value)}
           >
             <RadioCard.Label visibility="hidden" fontSize="2xl" mb="4">
               Selecione uma forma de pagamento

@@ -11,12 +11,14 @@ const UserProvider = ({ children }: UserProviderProps) => {
   const { data, isSuccess, isLoading, error } = useQuery<UserData>({
     queryKey: [QUERY.USER],
     queryFn: getUserInfo,
-    initialData: undefined,
   });
   const user = error ? undefined : data;
   const isLoggedIn = isSuccess;
 
-  const value = useMemo(() => ({ user, isLoggedIn, isLoading }), [data, error]);
+  const value = useMemo(
+    () => ({ user, isLoggedIn, isLoading }),
+    [user, isLoggedIn, isLoading]
+  );
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };

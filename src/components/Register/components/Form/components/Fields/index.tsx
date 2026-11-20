@@ -64,7 +64,7 @@ const Fields: React.FC<FieldsProps> = ({
           invalid={!!errors[FIELD.CONFIRM_PASSWORD]}
           {...register(FIELD.CONFIRM_PASSWORD, {
             required: true,
-            validate: (value, { password }) => value == password,
+            validate: (value, { password }) => value === password,
           })}
           type="password"
           label="Repetir senha"

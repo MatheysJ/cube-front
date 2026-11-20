@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { LoginBody } from "@/services/auth/login/types";
 
-import { Action, Form, Links, Root, ThirdParty } from "./components";
+import { Action, Form, Root } from "./components";
 import { WaveBackground } from "../Common";
 
 const Login: React.FC = () => {
@@ -12,9 +12,7 @@ const Login: React.FC = () => {
     <React.Fragment>
       <Root>
         <Form {...form} />
-        {/* <Links /> */}
         <Action getValues={form.getValues} />
-        {/* <ThirdParty /> */}
       </Root>
       <WaveBackground />
     </React.Fragment>

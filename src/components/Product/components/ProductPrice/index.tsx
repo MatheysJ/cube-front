@@ -13,7 +13,7 @@ export const ProductPrice: React.FC<ProductPriceProps> = ({
   return (
     <Box display="flex" gap="4">
       <Text
-        as={!!hasSale ? "s" : undefined}
+        as={hasSale ? "s" : undefined}
         textStyle="2xl"
         fontWeight="medium"
         letterSpacing="tight"
@@ -21,7 +21,7 @@ export const ProductPrice: React.FC<ProductPriceProps> = ({
       >
         {formatToBrl(standard)}
       </Text>
-      {!!hasSale ? (
+      {hasSale ? (
         <Text textStyle="2xl" fontWeight="medium" letterSpacing="tight" mt="2">
           {formatToBrl(sale)}
         </Text>

@@ -15,7 +15,7 @@ export const useActions = ({ getValues }: ActionProps) => {
   usePrefetch([PAGE.LOGIN, PAGE.HOME, PAGE.REGISTER]);
 
   const queryClient = useQueryClient();
-  const { mutateAsync, isPending, error } = useMutation<
+  const { mutateAsync, isPending } = useMutation<
     void,
     ErrorResponse,
     LoginBody
@@ -50,6 +50,5 @@ export const useActions = ({ getValues }: ActionProps) => {
     handleLogin,
     handleRegister,
     isPending,
-    error,
   };
 };

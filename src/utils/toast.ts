@@ -1,44 +1,29 @@
 import { toaster } from "@/components/ui/toaster";
 
+const showToast = (type: "error" | "success", description: string) =>
+  toaster.create({ type, description, closable: true });
+
 const toastUtils = {
   handleLoginFailure: (errorMessage?: string) =>
-    toaster.create({
-      type: "error",
-      description:
-        errorMessage ?? "Falha ao realizar login. Tente novamente mais tarde.",
-      closable: true
-      }),
+    showToast(
+      "error",
+      errorMessage ?? "Falha ao realizar login. Tente novamente mais tarde."
+    ),
   handleOrderFailure: () =>
-    toaster.create({
-      type: "error",
-      description: "Falha ao finalizar pedido. Tente novamente mais tarde.",
-      closable: true
-    }),
+    showToast(
+      "error",
+      "Falha ao finalizar pedido. Tente novamente mais tarde."
+    ),
   handleLogoutFailure: (errorMessage?: string) =>
-    toaster.create({
-      type: "error",
-      description:
-        errorMessage ?? "Falha ao deslogar. Tente novamente mais tarde.",
-      closable: true
-      }),
-  handleAddToCart: () => 
-    toaster.create({
-      type: "success",
-      description: "Produto adicionado ao carrinho",
-      closable: true
-    }),
-  handleFillAddressInfo: () => 
-    toaster.create({
-      type: "error",
-      description: "Preencha as informações de endereço para continuar",
-      closable: true
-    }),
-    handleFillAddresseeInfo: () => 
-    toaster.create({
-      type: "error",
-      description: "Informe quem deverá retirar o pedido para continuar",
-      closable: true
-    })
+    showToast(
+      "error",
+      errorMessage ?? "Falha ao deslogar. Tente novamente mais tarde."
+    ),
+  handleAddToCart: () => showToast("success", "Produto adicionado ao carrinho"),
+  handleFillAddressInfo: () =>
+    showToast("error", "Preencha as informações de endereço para continuar"),
+  handleFillAddresseeInfo: () =>
+    showToast("error", "Informe quem deverá retirar o pedido para continuar"),
 };
 
 export default toastUtils;

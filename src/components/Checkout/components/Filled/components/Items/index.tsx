@@ -6,7 +6,7 @@ import { CheckoutItemsProps } from "./types";
 
 const CheckoutItems: React.FC<CheckoutItemsProps> = ({ currentStep }) => {
   const { items } = useCart();
-  const shouldRender = currentStep == 0;
+  const shouldRender = currentStep === 0;
 
   return shouldRender
     ? items.map((item) => <SimpleProductCard key={item.id} {...item} />)
